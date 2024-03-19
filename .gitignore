@@ -1,0 +1,28 @@
+# Fichiers de configuration locaux
+*.tfvars
+
+# Fichiers de plan Terraform
+*.tfplan
+
+# Fichiers de sauvegarde Terraform
+*.backup
+
+# Fichiers de l'état Terraform
+*.tfstate
+*.tfstate.*
+
+# Fichiers de journalisation
+*.log
+
+# Répertoire .terraform pour stocker les plugins
+.terraform/
+
+# Fichiers binaires
+bin/
+
+# Fichiers générés par l'IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
