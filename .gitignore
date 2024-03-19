@@ -26,3 +26,5 @@ bin/
 *.ipr
 *.iws
 .vscode/
+
+main.tf
