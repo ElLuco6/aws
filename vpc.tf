@@ -6,11 +6,9 @@ resource "aws_vpc" "vpc_tooling" {
     Name = "local.vpc_name"
   }
 }
-
-# resource "aws_internet_gateway" "igw_tooling" {
-#   vpc_id = aws_vpc.vpc_tooling.id
-#     tags = {
-#         Name = "local.ig_name"
-#     }
-
-# }
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.vpc_tooling.id
+  tags = {
+    Name = "local.igw_name"
+  }
+}
