@@ -1,30 +1,30 @@
-# resource "aws_security_group" "nginx_sg" {
-#   name        = "nginx-sg"
-#   description = "Security group for nginx instance"
-#   vpc_id      = aws_vpc.my_vpc.id
+resource "aws_security_group" "nginx_sg" {
+  name        = "nginx-sg"
+  description = "Security group for nginx instance allowing HTTP traffic"
+  vpc_id      = aws_vpc.my_vpc.id
 
-#   ingress {
-#     from_port   = 80
-#     to_port     = 80
-#     protocol    = "tcp"
-#     cidr_blocks = ["0.0.0.0/0"]
-#   }
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
-#   egress {
-#     from_port   = 0
-#     to_port     = 0
-#     protocol    = "-1"
-#     cidr_blocks = ["0.0.0.0/0"]
-#   }
-# }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
 
 # # Création de l'instance EC2 Ubuntu avec Nginx
 # resource "aws_instance" "nginx_instance" {
-#   ami                    = "your_ami_id"
-#   instance_type          = "your_instance_type"
+#   ami                    = "ami-00c71bd4d220aa22a"
+#   instance_type          = "t2.micro"
 #   subnet_id              = aws_subnet.private_subnets[0].id
 #   key_name               = aws_key_pair.my_key.key_name
-#   security_group_ids     = [aws_security_group.nginx_sg.id]
+#   vpc_security_group_ids = [aws_security_group.nginx_sg.id]
 
 #   user_data = <<-EOF
 #               #!/bin/bash
