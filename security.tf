@@ -29,12 +29,30 @@ resource "aws_security_group" "mern_sg" {
     protocol        = "tcp"
     security_groups = [aws_security_group.bastion_sg.id]
   }
+  ingress {
+    from_port       = 6868
+    to_port         = 6868
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb_sg.id]
+  
+  }
+  ingress {
+    from_port       = 8888
+    to_port         = 8888
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb_sg.id]
+  }
 
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    security_groups = [ aws_security_group.alb_sg.id ]
+  }
+
+  ingress {
+
   }
 
   ingress {
@@ -42,6 +60,7 @@ resource "aws_security_group" "mern_sg" {
     to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    security_groups = [ aws_security_group.alb_sg.id ]
   }
 
   egress {
